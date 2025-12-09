@@ -102,7 +102,13 @@ def get_record(
         Optional[Dict]: The record if found, None otherwise. The response includes
         the item attributes if found, or None if not found.
     """
-    dynamodb = boto3.resource('dynamodb')
+    # Initialize AWS session with region
+    session = boto3.Session(
+        aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+        aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY'),
+        region_name=os.getenv('AWS_REGION')
+    )
+    dynamodb = session.resource('dynamodb')
     table = dynamodb.Table(table_name)
     
     try:
