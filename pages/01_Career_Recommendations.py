@@ -86,6 +86,7 @@ with st.sidebar:
         st.rerun()
 
 # Generate recommendations
+# additional comment 
 if not st.session_state.generated:
     if st.button("✨ Generate Career Recommendations", type="primary", use_container_width=True):
         with st.spinner("🔍 Analyzing your profile and finding the best career matches..."):
